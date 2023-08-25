@@ -46,9 +46,13 @@ playbook_name.yml: Brief description of what this playbook does.
 Contributions to refine the playbooks, introduce new roles, or enhance existing ones are welcome:
 
 Fork the repository.
+<br>
 Create your feature branch: git checkout -b feature/your-feature-name
+<br>
 Commit your changes: git commit -am 'Add or refine feature'
+<br>
 Push to the branch: git push origin feature/your-feature-name
+<br>
 Submit a pull request.
 # License
 Mention the license under which you're distributing these playbooks. If unsure, you might want to consider open-source licenses like MIT, GPL, or Apache.
