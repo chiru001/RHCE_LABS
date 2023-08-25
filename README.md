@@ -3,12 +3,19 @@ A collection of Ansible playbooks and roles designed to automate various tasks a
 
 # Table of Contents
 Introduction
+<br>
 Prerequisites
+<br>
 Installation and Setup
+<br>
 Usage
+<br>
 Playbooks List
+<br>
 Contributing
+<br>
 License
+<br>
 Contact
 # Introduction
 This repository aims to serve as a comprehensive resource for Ansible users seeking to automate tasks, configurations, and deployments on RHEL9 systems. It stems from hands-on practices and continual refinement to ensure optimal, efficient, and standardized configurations.
