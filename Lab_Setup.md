@@ -190,4 +190,4 @@ ansible all -m ping
 
 **Now we can able to see the results**
 
-<center><mark>*****IT NEEDS PYTHON3 it python is not present then use yum install python3*****</mark></center>
+<center>'*****IT NEEDS PYTHON3 it python is not present then use yum install python3*****'</center>
