@@ -1,6 +1,8 @@
 # Ansible (RHCE) Class Day:1
 
 **Lab_Creation:**
+
+
 **- VirtualBox: https://www.virtualbox.org/wiki/Downloads**
 **- Vagrant:  https://developer.hashicorp.com/vagrant/downloads**
 
