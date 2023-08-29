@@ -10,16 +10,18 @@
 
 **Download these two files and install in you system.**
 
-**Now create a new folder in anywhere in you HDD but make sure you need to run the Vagrant from that folder only if you are tying from another path Vagrant will not work**
+**Now create a new folder in anywhere in you HDD but make sure you need to run the Vagrant from that folder only if you are trying from another path Vagrant will not work**
 
 ```Laptop
 D: \ ANSIBLE
 ```
-**So now we need to create a Vagrantfile so inside we will add vmnames, os, ip . Now create a SSH key to login automatically instead of given password**
+**Now create a SSH key to login automatically instead of giving password**
 
 ```bash
 ssh-keygen
 ```
+**So now we need to create a Vagrantfile in that we will be add vmnames, os, ip,etc**
+
 
 **Add the below content in Vagrantfile.**
 
