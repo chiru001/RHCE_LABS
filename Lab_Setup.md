@@ -183,6 +183,7 @@ vi ansible.cfg
 ```
 
 **Now we can test ansible automation**
+
 ```BASH
 ansible all -m ping
 
