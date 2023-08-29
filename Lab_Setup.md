@@ -87,7 +87,9 @@ end
 ```CLI
 vagrant up
 ```
-**this will power on all the 4 VM's  if you want turn on one 1 VM use (vagrant up node1.example.com) Note: run the command in the path which we pasted Vagrantfile .**
+**This will power on all the 4 VM's  if you want turn on one 1 VM use (vagrant up node1.example.com)**
+
+**Note: run the command in the path which we pasted Vagrantfile.**
 
 
 # NOW OUR LAB IS READY FOR ANSIBLE 
