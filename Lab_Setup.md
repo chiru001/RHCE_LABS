@@ -8,7 +8,7 @@
 
 **- Vagrant:  https://developer.hashicorp.com/vagrant/downloads**
 
-![Ansible_Lab_image](./Ansible_lab.png)
+![Ansible_Lab_image](./images/Ansible_lab.png)
 
 **Download these two files and install in you system.**
 
