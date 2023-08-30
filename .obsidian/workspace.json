@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "878bde4909c5c3ec",
+        "id": "dfbc17fd05cef2d4",
         "type": "tabs",
         "children": [
           {
-            "id": "cbd99dd98c1bd6ff",
+            "id": "8a2e2adae436090a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -128,8 +128,17 @@
                 "file": "Lab_Setup.md"
               }
             }
+          },
+          {
+            "id": "ccc7989a09b18158",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -143,12 +152,17 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "cbd99dd98c1bd6ff",
+  "active": "ccc7989a09b18158",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2023-08-30 13.09.46.excalidraw.md",
     "Lab_Setup.md",
+    "Excalidraw",
+    "Untitled",
     "images/Lab_Setup.md",
     "images/Ansible_lab.png",
     "images",
