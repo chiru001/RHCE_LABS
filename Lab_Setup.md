@@ -8,6 +8,8 @@
 
 **- Vagrant:  https://developer.hashicorp.com/vagrant/downloads**
 
+![Ansible_Lab_image]("F:\RHEL9 NETWORKINGS\RHCS_ANSIBLE_AUTOMATION\Ansible_lab.png")
+
 **Download these two files and install in you system.**
 
 **Now create a new folder in anywhere in you HDD but make sure you need to run the Vagrant from that folder only if you are trying from another path Vagrant will not work**
@@ -87,7 +89,7 @@ end
 ```CLI
 vagrant up
 ```
-**This will power on all the 4 VM's  if you want turn on one 1 VM use (vagrant up node1.example.com)**
+**This will power on all the 4 VM's  if you want turn on one 1 PVM use (vagrant up node1.example.com)**
 
 **Note: run the command in the path which we pasted Vagrantfile.**
 
