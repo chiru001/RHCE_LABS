@@ -107,22 +107,22 @@ vagrant ssh ansible.example.com   # run in the same path (Ansible Folder)
 **Become root user first**
 
 ```SHELL
-[vagrant@ansible ~] sudo su -
+sudo su -
 ```
 
 **Lets check for Sudo-configurations now**
 
 ```SHELL
-[vagrant@ansible ~] visudo -c
+visudo -c
 #you will seeing error in /etc/sudoers.d/vagrant: bad permissions, should be mode 0440
-[vagrant@ansible ~] chmod 440  /etc/sudoers.d/vagrant
+chmod 440  /etc/sudoers.d/vagrant
 visudo -c
 ```
 
 **Lets cat the vagrant  file**
 
 ```SHELL
-[vagrant@ansible ~] cat /etc/sudoers.d/vagrant
+cat /etc/sudoers.d/vagrant
 #output:%vagrant ALL=(ALL) NOPASSWD: ALL
 #it says any user part of vagrant group can login with no password which is good.
 #now we will create a devops user & add vagrant group as secondary group.
@@ -131,14 +131,14 @@ visudo -c
 **Creating & adding Vagrant group to devops user:**
 
 ```SHELL
-[vagrant@ansible ~] useradd -G vagrant devops  #-G is used as adding secondary group(vagrant) to devops user
+useradd -G vagrant devops  #-G is used as adding secondary group(vagrant) to devops user
 id devops
 ```
 
 **Creating password to devops user:**
 
 ```SHELL
-[vagrant@ansible ~] echo "redhat" | passwd devops -stdin 
+echo "redhat" | passwd devops --stdin 
 ```
 
 **NOW LOGIN TO NODE1,2,3 AND DO THE SAME STEPS WHICH WE HAVE DONE IN ANSIBLE SERVER**
@@ -146,22 +146,22 @@ id devops
 **Now inside of ansible named server login as devops user**
 
 ```SHELL
-[vagrant@ansible ~] su -devops
+su devops
 ```
 
 
 **Lets create SSH-keys for devops user. So that we can connect with other nodes like node1 node2 node3 with password-less-authentication**
 
 ```SHELL
-[devops@ansible ~]ssh-keygen # just given enter enter enter key will be generated
+ssh-keygen # just given enter enter enter key will be generated
 ```
 
 **At this point we already have created devops user in all 4 servers. Now from ansible server we have created SSH key. we need to transfer the key to node1,2,3 for password-less authentication**
 
 ```SHELL
-[devops@ansible ~] ssh-copy-id node1
-[devops@ansible ~] ssh-copy-id node2
-[devops@ansible ~] ssh-copy-id node3
+ssh-copy-id node1
+ssh-copy-id node2
+ssh-copy-id node3
 ```
 
 But here from ansible node servers are not reachable we can check with using ping command.ping node1. Here before running ssh-copy-id, we need to add DNS entries after that we can run the above commands. so lets do it.
@@ -185,17 +185,17 @@ inside of host file add the dns entries
 **First we need to install pip**
 
 ```SHELL
-[devops@ansible ~] curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-[devops@ansible ~] python3 get-pip.py --user
-[devops@ansible ~] python3 -m pip -V
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
+python3 -m pip -V
  
 ```
 
 **Installing Ansible**
 
 ```SHELL
-[devops@ansible ~] python3 -m pip install --user ansible
-[devops@ansible ~] ansible --version
+python3 -m pip install --user ansible
+ansible --version
 ```
 
 # Configuring Ansible:
@@ -203,8 +203,8 @@ inside of host file add the dns entries
 **Create one more directory named projects and go inside of that directory**
 
 ```SHELL
-[devops@ansible ~] mkdir projects
-[devops@ansible ~] cd projects
+mkdir projects
+cd projects
 ```
 
 # Creating a inventory file:
@@ -223,7 +223,7 @@ wq!
 vi ansible.cfg
 	 [defaults]
 	inventory = ./inventory
-	remote_user = user
+	remote_user = devops
 	ask_pass = false
 	
 	[privilege_esclation]

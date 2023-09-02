@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "dfbc17fd05cef2d4",
+        "id": "b427b0c1742eae54",
         "type": "tabs",
         "children": [
           {
-            "id": "8a2e2adae436090a",
+            "id": "028250bc069d3e38",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "00_Lab_Setup/Lab_Setup.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "00_Lab_Setup/Lab_Setup.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "00_Lab_Setup/Lab_Setup.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "00_Lab_Setup/Lab_Setup.md"
+              }
             }
           },
           {
@@ -151,9 +159,11 @@
   },
   "active": "800f57edce6c4156",
   "lastOpenFiles": [
+    "00_Lab_Setup/Ansible_lab.png",
+    "00_Lab_Setup/Lab_Setup.md",
+    "Lab_Setup.md",
     "02_Labs_pratices/01Lab_pratice.md",
     "02_Labs_pratices",
-    "00_Lab_Setup/Lab_Setup.md",
     "00_Lab_Setup",
     "01_DAILY_NOTES/Class_demo.txt",
     "01_DAILY_NOTES",
@@ -164,11 +174,9 @@
     "Lab_Setup/Lab_Setup.md",
     "Lab_Setup",
     "Excalidraw/Drawing 2023-08-30 13.09.46.excalidraw.md",
-    "Lab_Setup.md",
     "Excalidraw",
     "Untitled",
     "images/Lab_Setup.md",
-    "images/Ansible_lab.png",
     "Ansible_lab.png"
   ]
 }
