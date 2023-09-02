@@ -244,4 +244,10 @@ ansible all -m ping
 
 - **We should run the ansible commands or playbooks inside project directory. Because inventory and .cfg file present in project directory**
 - **If we are running outside of the directory we will be getting the error.**
-
+```SHELL
+vagrant up
+vagrant halt #shutdown the vm's
+vagrant suspend #hypernate
+vagrant resume # will resume from hypernate
+vagrant destory #to remove the vm
+```
