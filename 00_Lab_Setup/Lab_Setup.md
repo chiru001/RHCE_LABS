@@ -1,34 +1,33 @@
-# Ansible (RHCE) Class Day:1
 
-**Lab_Creation:**
+## This is for the exam practice lab for RHCE(EX-294)
 
+**Requirement need to have knowledge on RHEL Linux.**
 
-**- VirtualBox: https://www.virtualbox.org/wiki/Downloads**
+**Lets setup the lab using Vagrant. Required links are below**
 
+- **VMware Link:https://www.virtualbox.org/wiki/Downloads** 
+- **Vagrant Link:https://developer.hashicorp.com/vagrant/downloads** 
 
-**- Vagrant:  https://developer.hashicorp.com/vagrant/downloads**
+**After Downloading kindly install the VMware in your machine.**
 
-![Ansible_Lab_image](./images/Ansible_lab.png)
+## Lab Topology:
+![Topology](./Ansible_lab.png)
+**Now create a new folder in anywhere in you HDD but make sure whenever you need to power on the labs you need to run Vagrant command from that particular path only**
 
-**Download these two files and install in you system.**
-
-**Now create a new folder in anywhere in you HDD but make sure you need to run the Vagrant from that folder only if you are trying from another path Vagrant will not work**
-
-```Laptop
-D: \ ANSIBLE
+```SHELL
+sudo mkdir Ansible
 ```
+
 **Now create a SSH key to login automatically instead of giving password**
 
-```bash
-ssh-keygen
+```SHELL
+sudo ssh-keygen
 ```
-**So now we need to create a Vagrantfile in that we will be add vmnames, os, ip,etc**
 
+**So now we need to create a Vagrant file in that we will be add few parameter's like IP, RAM,HDD ..etc**
 
-**Add the below content in Vagrantfile.**
-
-```Vagrantfile
-
+**Add the below content in Vagrant file & save this file inside of Ansible folder**
+```Vagrant
 Vagrant.configure("2") do |config|
   servers=[
     {
@@ -81,86 +80,137 @@ Vagrant.configure("2") do |config|
 
   config.ssh.insert_key = false
 end
-
-``` 
+```
 
 **Now power on the VM using Vagrant use below Command**
 
-```CLI
+**Note: Make sure to run the below command from Ansible folder only or else you will be getting error**
+
+```SHELL
 vagrant up
 ```
-**This will power on all the 4 VM's  if you want turn on one 1 PVM use (vagrant up node1.example.com)**
 
-**Note: run the command in the path which we pasted Vagrantfile.**
+**This will power on all the 4 VM's if you want turn on 1 VM use (vagrant up node1.example.com)**
 
+**NOW OUR LAB IS READY FOR ANSIBLE**
 
-# NOW OUR LAB IS READY FOR ANSIBLE 
+# Lets Configure our Lab
 
 **Take SSH of ansible.example.com**
 
-```CLI
-vagrant ssh ansible.example.com   # run in the same path
+```SHELL
+vagrant ssh ansible.example.com   # run in the same path (Ansible Folder)
 ```
 
- **Inside the ansible VM**
- 
- ```BASH
- dnf search ansible  #if repo is not present you need to configure the repo
-sudo su -
-dnf install ansible-core
-ansible --version
-useradd devops
-	visudo -c
-	you will seeing error in /etc/sudoers.d/vagrant: bad permissions, should be mode 0440
-chmod 440  /etc/sudoers.d/vagrant
-visudo -c   #now you can see no issues in visudo files
-cat /etc/sudoers/vagrant    # it says any user part of vagrant group login will no password which is good now we will add devops user whcih we hacreated to vagrant group.
-useradd -G vagrant devops
-passwd devops
-Last step is to create ssh-keys for devops user.
-su -devops
-ssh-keygen  enter enter enter.
-SSH-KEYs has been created  now we need to transferred this key to all the remaining node node1 node2 node3.
-ping  node1,node2,node3    #but we are not able to ping to the node1,2,3
+**Inside the ansible VM**
+
+**Become root user first**
+
+```SHELL
+[vagrant@ansible ~] sudo su -
+```
+
+**Lets check for Sudo-configurations now**
+
+```SHELL
+[vagrant@ansible ~] visudo -c
+#you will seeing error in /etc/sudoers.d/vagrant: bad permissions, should be mode 0440
+[vagrant@ansible ~] chmod 440  /etc/sudoers.d/vagrant
+visudo -c
+```
+
+**Lets cat the vagrant  file**
+
+```SHELL
+[vagrant@ansible ~] cat /etc/sudoers.d/vagrant
+#output:%vagrant ALL=(ALL) NOPASSWD: ALL
+#it says any user part of vagrant group can login with no password which is good.
+#now we will create a devops user & add vagrant group as secondary group.
+```
+
+**Creating & adding Vagrant group to devops user:**
+
+```SHELL
+[vagrant@ansible ~] useradd -G vagrant devops  #-G is used as adding secondary group(vagrant) to devops user
+id devops
+```
+
+**Creating password to devops user:**
+
+```SHELL
+[vagrant@ansible ~] echo "redhat" | passwd devops -stdin 
+```
+
+**NOW LOGIN TO NODE1,2,3 AND DO THE SAME STEPS WHICH WE HAVE DONE IN ANSIBLE SERVER**
+
+**Now inside of ansible named server login as devops user**
+
+```SHELL
+[vagrant@ansible ~] su -devops
+```
+
+
+**Lets create SSH-keys for devops user. So that we can connect with other nodes like node1 node2 node3 with password-less-authentication**
+
+```SHELL
+[devops@ansible ~]ssh-keygen # just given enter enter enter key will be generated
+```
+
+**At this point we already have created devops user in all 4 servers. Now from ansible server we have created SSH key. we need to transfer the key to node1,2,3 for password-less authentication**
+
+```SHELL
+[devops@ansible ~] ssh-copy-id node1
+[devops@ansible ~] ssh-copy-id node2
+[devops@ansible ~] ssh-copy-id node3
+```
+
+But here from ansible node servers are not reachable we can check with using ping command.ping node1. Here before running ssh-copy-id, we need to add DNS entries after that we can run the above commands. so lets do it.
+
+```SHELL
 sudo su -
 vi /etc/hosts
 inside of host file add the dns entries
 192.168.56.101	node1
 192.168.56.102	node2
 192.168.56.103	node3
- :wq!
-
+:wq!
 ```
 
- ***ping node1 node2 node3  # this time this will ping to the servers***
+# Install ansible in ansible server(control-server)
 
-**Login to node1,2,3 and do the same process:**
-```BASH
-chmod 440  /etc/sudoers.d/vagrant
-useradd -G vagrant devops
-passwd devops
-```
-**Now login to ansible node and try to take SSH devops@node1  # we can able to login to node1 ,2 ,3**
-**Now while to doing SSH it is asking password to avoid it we have already created a SSH-key now we need to transfer that SSH key to all the nodes node1,2,3**
+**Here as it is a linux server we can use dnf or yum but the issue is it will not install all the modules. so we have alternative we can install ansible using python**
 
-## In Ansible Node
-```BASH
-su - devops
-ssh-copy-id devops@node1
-ssh-copy-id devops@node2
-ssh-copy-id devops@node3
+**Using python it will install all the modules of ansible**
+
+**First we need to install pip**
+
+```SHELL
+[devops@ansible ~] curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+[devops@ansible ~] python3 get-pip.py --user
+[devops@ansible ~] python3 -m pip -V
+ 
 ```
 
-**Now from ansible user we can able to login to all the nodes without any password**
-<center><mark>*****Lab Setup completed*****</mark></center>
+**Installing Ansible**
 
-**Now we will perform a simple ansible code for testing**
-# Creating a inventory file
+```SHELL
+[devops@ansible ~] python3 -m pip install --user ansible
+[devops@ansible ~] ansible --version
+```
 
-```BASH
- mkdir projects
- cd projects
- vi inventory    #Creating a inventory file & adding our vm's
+# Configuring Ansible:
+
+**Create one more directory named projects and go inside of that directory**
+
+```SHELL
+[devops@ansible ~] mkdir projects
+[devops@ansible ~] cd projects
+```
+
+# Creating a inventory file:
+
+```SHELL
+vi inventory    #Creating a inventory file & adding our vm's
 	-node1
 	-node2
 	-node3
@@ -169,7 +219,7 @@ wq!
 
 # Creating a Anisble.cfg file:
 
-```BASH
+```SHELL
 vi ansible.cfg
 	 [defaults]
 	inventory = ./inventory
@@ -186,11 +236,12 @@ vi ansible.cfg
 
 **Now we can test ansible automation**
 
-```BASH
+```SHELL
 ansible all -m ping
-
 ```
 
-**Now we can able to see the results**
+# Points to remembers
 
-<center><mark>'*****IT NEEDS PYTHON3 it python is not present then use yum install python3*****'</mark></center>
+- ** We should run the ansible commands or playbooks inside project directory. Because inventory and .cfg file present in project directory**
+- **If we are running outside of the directory we will be getting the error.**
+
