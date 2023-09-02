@@ -1,5 +1,5 @@
 
-## This is for the exam practice lab for RHCE(EX-294)
+# Practical Lab setup for RHCE(EX-294)
 
 **Requirement need to have knowledge on RHEL Linux.**
 
@@ -242,6 +242,6 @@ ansible all -m ping
 
 # Points to remembers
 
-- ** We should run the ansible commands or playbooks inside project directory. Because inventory and .cfg file present in project directory**
+- **We should run the ansible commands or playbooks inside project directory. Because inventory and .cfg file present in project directory**
 - **If we are running outside of the directory we will be getting the error.**
 
