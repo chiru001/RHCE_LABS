@@ -6,6 +6,9 @@
       package:
         name: httpd
         state: present
+    #- name: Run semanage command
+      #command: semanage port -a -t http_port_t -p tcp 82
+      #become: yes
     - name: start and enable firewalld
       service:
         name: firewalld
