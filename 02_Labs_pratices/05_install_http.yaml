@@ -1,0 +1,31 @@
+---
+- name: install httpd server
+  hosts: all
+  tasks:
+    - name: install httpd
+      package:
+        name: httpd
+        state: present
+    - name: start and enable firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+    - name: add service in firewalld
+      firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: true     
+      
+    - name: create index.html
+      copy:
+        content: "hello world"
+        dest: /var/www/html/index.html
+    - name: restart httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes 
+      
+

@@ -1,0 +1,25 @@
+---
+- name: Test ping on managed nodes
+  hosts: all
+  tasks:
+   - name: use ping module
+     ping:
+   - name: Add the user 'cena' with specified UID
+     user:
+       name: cena
+       comment: DB-Team
+       uid: 1040
+
+- name: User Verification  # This is second playbook
+  hosts: all
+  tasks:
+   - name: use shell and run id johnd
+     shell: id cena # Here it will generate the output but we need to assign a variable to it
+     # Output will not be printed if we want to see output use a variable
+     register: output
+
+   - name: print output
+     debug: 
+       var: output.std 
+
+#using .STD we will be seeing only standed output but not all data.     
