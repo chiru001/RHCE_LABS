@@ -1,0 +1,12 @@
+---
+- name: Test ping on managed nodes
+  hosts: all
+  tasks:
+   - name: use ping module
+     ping:
+   - name: Add the user 'cena' with specified UID
+     user:
+       name: cena
+       comment: DB-Team
+       uid: 1040
+             

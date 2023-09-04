@@ -1,0 +1,6 @@
+---
+- name: Test ping on managed nodes
+  hosts: all
+  tasks:
+    - name: use ping module
+      ping:
