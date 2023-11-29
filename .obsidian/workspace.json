@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00_Lab_Setup/Lab_Setup.md",
+                "file": "01_DAILY_NOTES/Day-01.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00_Lab_Setup/Lab_Setup.md",
+                "file": "01_DAILY_NOTES/Day-01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "00_Lab_Setup/Lab_Setup.md",
+                "file": "01_DAILY_NOTES/Day-01.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00_Lab_Setup/Lab_Setup.md"
+                "file": "01_DAILY_NOTES/Day-01.md"
               }
             }
           },
@@ -159,8 +159,9 @@
   },
   "active": "800f57edce6c4156",
   "lastOpenFiles": [
-    "00_Lab_Setup/Ansible_lab.png",
     "00_Lab_Setup/Lab_Setup.md",
+    "01_DAILY_NOTES/Day-01.md",
+    "00_Lab_Setup/Ansible_lab.png",
     "Lab_Setup.md",
     "02_Labs_pratices/01Lab_pratice.md",
     "02_Labs_pratices",
